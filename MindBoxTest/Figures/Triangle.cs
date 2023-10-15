@@ -12,13 +12,15 @@ namespace MindBox.Figures
         private readonly double b;
         private readonly double c;
 
-        public override double S => Math.Sqrt((P / 2 - a) * (P / 2 - b) * (P / 2 - c));
+        public override double S => Math.Sqrt((P / 2) * (P / 2 - a) * (P / 2 - b) * (P / 2 - c));
         public override double P => a + b + c;
 
         public bool IsRectangular => 
             a * a + b * b == c * c 
             || a * a + c * c == b * b 
             || b * b + c * c == a * a;
+
+        private string info => IsRectangular? "Прямоугольный" : "Непрямоугольный";
 
         private Triangle(double a1, double b1, double c1) 
         { 
@@ -39,6 +41,6 @@ namespace MindBox.Figures
         }
 
         public override string ToString()
-            => $"Треугольник " + base.ToString();
+            => $"{info} треугольник " + base.ToString();
     }
 }
